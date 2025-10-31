@@ -2,6 +2,8 @@
 
 A modern time tracking and invoicing platform for freelancers and small businesses.
 
+https://github.com/user-attachments/assets/5186f3d5-1489-46f9-b0ca-275f040b79aa
+
 ## Features
 
 - **Time Tracking** - Track billable hours with heatmaps and analytics
