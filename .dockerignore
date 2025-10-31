@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Environment files
+.env
+.env.example
+
+# Docker files
+docker-compose.yml
+Dockerfile
+.dockerignore
+!docker-entrypoint.sh
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Binary
+worklio-api
+
+# Frontend
+web/
+
+# Database migrations (if you want to exclude them)
+# db/migrations/
+
+# Claude
+.claude/

@@ -1,0 +1,34 @@
+.claude
+
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+worklio-api
+
+# Test binary
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+
+# Database
+db/schema.sql
+
+# Generated documentation
+docs/

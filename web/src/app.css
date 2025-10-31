@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@source "../node_modules/flowbite-svelte/dist";
+@source "../node_modules/flowbite-svelte-icons/dist";
+
+@layer base {
+	/* disable chrome cancel button */
+	input[type='search']::-webkit-search-cancel-button {
+		display: none;
+	}
+
+	/* Force dark mode styles for Flowbite components */
+	.dark {
+		color-scheme: dark;
+	}
+}
+
+@layer components {
+	/* Sidebar styling overrides */
+	:global(.dark aside[class*='sidebar']) {
+		background-color: rgb(30 41 59) !important;
+	}
+
+	:global(.dark aside[class*='sidebar'] a) {
+		color: rgb(203 213 225);
+	}
+
+	:global(.dark aside[class*='sidebar'] a:hover) {
+		background-color: rgb(51 65 85);
+	}
+
+	:global(.dark aside[class*='sidebar'] a[aria-current='page']) {
+		background-color: rgb(59 130 246);
+		color: white;
+	}
+}
+@plugin 'flowbite/plugin';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--color-primary-50: #eff6ff;
+	--color-primary-100: #dbeafe;
+	--color-primary-200: #bfdbfe;
+	--color-primary-300: #93c5fd;
+	--color-primary-400: #60a5fa;
+	--color-primary-500: #3b82f6;
+	--color-primary-600: #2563eb;
+	--color-primary-700: #1d4ed8;
+	--color-primary-800: #1e40af;
+	--color-primary-900: #1e3a8a;
+
+	--color-secondary-50: #faf5ff;
+	--color-secondary-100: #f3e8ff;
+	--color-secondary-200: #e9d5ff;
+	--color-secondary-300: #d8b4fe;
+	--color-secondary-400: #c084fc;
+	--color-secondary-500: #a855f7;
+	--color-secondary-600: #9333ea;
+	--color-secondary-700: #7e22ce;
+	--color-secondary-800: #6b21a8;
+	--color-secondary-900: #581c87;
+}
