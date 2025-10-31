@@ -1,4 +1,5 @@
 services:
+  # PostgreSQL Database
   postgres:
     image: postgres:16-alpine
     container_name: facturme-postgres
@@ -15,7 +16,58 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - facturme-network
+
+  # Backend API (Go)
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: facturme-backend
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/facturme?sslmode=disable
+      JWT_SECRET: ${JWT_SECRET:-your-secret-key-change-this-in-production}
+      PORT: 8080
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-465}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SENDER_EMAIL: ${SENDER_EMAIL:-noreply@facturme.com}
+      SENDER_NAME: ${SENDER_NAME:-FacturMe}
+      APP_URL: ${APP_URL:-http://localhost:3000}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - facturme-network
+    restart: unless-stopped
+
+  # Frontend Web App (SvelteKit)
+  frontend:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: facturme-frontend
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:8080}
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - facturme-network
+    restart: unless-stopped
 
 volumes:
   postgres_data:
     driver: local
+
+networks:
+  facturme-network:
+    driver: bridge
