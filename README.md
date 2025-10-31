@@ -12,9 +12,9 @@ A modern time tracking and invoicing platform for freelancers and small business
 
 ## Tech Stack
 
-**Backend**: Go, Echo v4, PostgreSQL, JWT Auth, Swagger
-**Frontend**: SvelteKit, Tailwind CSS, Flowbite
-**DevOps**: Docker, Docker Compose
+- **Backend**: Go, Echo v4, PostgreSQL, JWT Auth, Swagger
+- **Frontend**: SvelteKit, Tailwind CSS, Flowbite
+- **DevOps**: Docker, Docker Compose
 
 ## Quick Start
 
